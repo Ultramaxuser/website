@@ -22,5 +22,24 @@
     <iframe class="pdf-viewer" src="Essentials of Ecology ( PDFDrive ).pdf#toolbar=0"></iframe>
     <p>Can’t view the PDF? <a href="Essentials of Ecology ( PDFDrive ).pdf">Download it here</a>.</p>
   </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+   <div id="pdf-viewer" style="width: 100%; height: 70vh;"></div>
+  <div style="display: flex; justify-content: center;">
+    <iframe src="/docs/your-file.pdf" width="80%" height="500px"></iframe>
+  </div>
+  <script>
+pdfjsLib.getDocument('/docs/your-file.pdf').promise.then(function(pdf) {
+     pdf.getPage(1).then(function(page) {
+       const viewport = page.getViewport({ scale: 1.5 });
+       const canvas = document.createElement('canvas');
+       const context = canvas.getContext('2d');
+       canvas.height = viewport.height;
+       canvas.width = viewport.width;
+       document.getElementById('pdf-viewer').appendChild(canvas);
+       page.render({ canvasContext: context, viewport: viewport });
+     });
+   });
+</script>
+  
 </body>
 </html>
