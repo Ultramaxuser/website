@@ -6,7 +6,16 @@
     </head>
     <body> 
     
-    <a href="Essentials of Ecology ( PDFDrive ).pdf" target="*blank">Open PDF in New Tab</a>
+    <div id="pdf-viewer"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+  <script>
+      pdfjsLib.getDocument('Essentials of Ecology ( PDFDrive ).pdf').promise.then(function(pdf) {
+          pdf.getPage(1).then(function(page) {
+              const viewer = document.getElementById('pdf-viewer');
+              // Render PDF page here
+          });
+      });
+  </script>
 
 <div class="about-content">
 
